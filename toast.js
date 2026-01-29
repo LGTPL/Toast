@@ -29,5 +29,5 @@ function hideToast(toast) {
 
   setTimeout(() => {
     toast.remove();
-  }, 60000);
+  }, 300);
 }
