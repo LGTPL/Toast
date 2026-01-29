@@ -31,3 +31,28 @@ function hideToast(toast) {
     toast.remove();
   }, 300);
 }
+
+
+
+(function () {
+
+  const moveToastIntoDialog = () => {
+    const toast = document.getElementById("toast-container");
+    const openDialog = document.querySelector("dialog[open]");
+
+    if (!toast) return;
+
+    if (openDialog && !openDialog.contains(toast)) {
+      openDialog.appendChild(toast);
+    }
+  };
+
+  // Run after page load
+  setTimeout(moveToastIntoDialog, 100);
+
+  // Watch for the modal open
+  document.addEventListener("click", () => {
+    setTimeout(moveToastIntoDialog, 100);
+  });
+
+})();
