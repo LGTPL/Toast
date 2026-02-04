@@ -1,8 +1,13 @@
-function showToast(
-  message = "Success!",
-  type = "success", // success | error
-  duration = 3000
-) {
+function showToast(message = "Success!", typeOrDuration = "success", duration = 3000) {
+  let type = "success";
+
+  // Backward + Wized-safe handling
+  if (typeof typeOrDuration === "string") {
+    type = typeOrDuration; // success | error
+  } else if (typeof typeOrDuration === "number") {
+    duration = typeOrDuration;
+  }
+
   const container = document.getElementById("toast-container");
   if (!container) return;
 
