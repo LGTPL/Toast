@@ -1,14 +1,18 @@
-function showToast(message = "Success!", duration = 3000) {
-
+function showToast(
+  message = "Success!",
+  type = "success", // success | error
+  duration = 3000
+) {
   const container = document.getElementById("toast-container");
-
   if (!container) return;
 
   const toast = document.createElement("div");
-  toast.className = "toast";
+  toast.className = `toast toast--${type}`;
+
+  const icon = type === "error" ? "✕" : "✓";
 
   toast.innerHTML = `
-    <div class="toast-icon">✓</div>
+    <div class="toast-icon">${icon}</div>
     <div>${message}</div>
     <div class="toast-close">✕</div>
   `;
@@ -32,10 +36,7 @@ function hideToast(toast) {
   }, 300);
 }
 
-
-
 (function () {
-
   const moveToastIntoDialog = () => {
     const toast = document.getElementById("toast-container");
     const openDialog = document.querySelector("dialog[open]");
@@ -47,12 +48,9 @@ function hideToast(toast) {
     }
   };
 
-  // Run after page load
   setTimeout(moveToastIntoDialog, 100);
 
-  // Watch for the modal open
   document.addEventListener("click", () => {
     setTimeout(moveToastIntoDialog, 100);
   });
-
 })();
