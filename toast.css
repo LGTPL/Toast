@@ -69,3 +69,21 @@
     opacity: 0;
   }
 }
+/* ---------- TOAST VARIANTS ---------- */
+
+/* Success (default) */
+.toast--success .toast-icon {
+  background: #e8f8ef;
+  color: #16a34a;
+}
+
+/* Error */
+.toast--error {
+  border-left: 4px solid #dc2626;
+}
+
+.toast--error .toast-icon {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
